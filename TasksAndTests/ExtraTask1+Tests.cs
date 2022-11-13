@@ -20,9 +20,11 @@ namespace TasksAndTests
             //2343 ---> [3][4][3][2] ---> [3][3][4][2] ---> 2433
             //1231  ---> [1][3][2][1]  ---> [2][1][3][1]  ---> 1312
             tracker = 0;
+            bool checkIfItsReal = true;
             while (tracker < arrNumber.Length - 1) {
                 if (arrNumber[tracker] > arrNumber[tracker + 1])
                 {
+                    checkIfItsReal = false;
                     int temp = arrNumber[tracker];
                     arrNumber[tracker] = arrNumber[tracker + 1];
                     arrNumber[tracker + 1] = temp;
@@ -39,6 +41,9 @@ namespace TasksAndTests
                 }
                 else tracker++;
             }
+            if (checkIfItsReal) {
+                return -1;
+            }
             number = 0;
             for (int i = 0; i < arrNumber.Length; i++) {
                 number = number + arrNumber[i] * (int)(Math.Pow(10, i));
@@ -51,8 +56,8 @@ namespace TasksAndTests
         public void ExtraTask1Test1()
         {
             //Arrange
-            int input = 2047;
-            int expected = 2074;
+            int input = 9;
+            int expected = -1;
 
             //Act
             input = ReturnBiggerNumber(input);

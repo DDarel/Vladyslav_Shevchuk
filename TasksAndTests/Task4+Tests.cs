@@ -5,9 +5,8 @@ namespace TasksAndTests
 {
     public class Task4Tests
     {
-        public static int PairCounter(int[] arr)
+        public static int PairCounter(int[] arr, int target)
         {
-            int target = 5;
             int count = 0;
             for (int i = 0; i < arr.Length - 1; i++)
             {
@@ -27,26 +26,28 @@ namespace TasksAndTests
         {
             //Arrange
             int[] inputList = { 1, 3, 6, 2, 2, 0, 4, 5 };
+            int target = 5;
             int expected = 4;
 
             //Act
-            int input = PairCounter(inputList);
+            int pairs = PairCounter(inputList, target);
 
             //Assert
-            Assert.AreEqual(expected, input);
+            Assert.AreEqual(expected, pairs);
         }
         [Test]
         public void Task4Test2()
         {
             //Arrange
             int[] inputList = { 7, 3, 6, 2, 2, 1, 4, 3 };
+            int target = 5;
             int expected = 5;
 
             //Act
-            int input = PairCounter(inputList);
+            int pairs = PairCounter(inputList, target);
 
             //Assert
-            Assert.AreEqual(expected, input);
+            Assert.AreEqual(expected, pairs);
         }
     }
 }

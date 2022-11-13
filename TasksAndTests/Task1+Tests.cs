@@ -1,3 +1,4 @@
+using NuGet.Frameworks;
 using NUnit.Framework;
 using System.Collections.Generic;
 
@@ -9,9 +10,15 @@ namespace TasksAndTests
         {
             for (int i = 0; i < list.Count; i++)
             {
-                if (list[i].Equals(list[i].ToString()))
-                {
+
+                if (int.TryParse(list[i].ToString(), out var x)){
+                    if (!list[i].Equals(x)) {
+                        list.RemoveAt(i);
+                        i--;
+                    }
+                } else {
                     list.RemoveAt(i);
+                    i--;
                 }
             }
             return list;
@@ -21,8 +28,9 @@ namespace TasksAndTests
         public void Task1Test1()
         {
             //Arrange
-            List<object> listInput = new List<object>() { "asdasdasd", 21, "asd", 2, "ekekk", 13, 45 };
-            List<object> listExpected = new List<object>() { 21,  2, 13, 45 };
+
+            List<object> listInput = new List<object> { 1, 2, 'a', '1', 2 };
+            List<object> listExpected = new List<object> { 1, 2, 2};
 
             //Act
             listInput = GetIntegersFromList(listInput);
